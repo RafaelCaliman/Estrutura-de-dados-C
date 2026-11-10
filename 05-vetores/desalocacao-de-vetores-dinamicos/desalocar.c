@@ -2,7 +2,7 @@
 #include <stdlib.h>
 void preencher(int *v , int tamanho){
 for(int i = 0; i < tamanho; i++){
-    printf("Prencha o Vetor: ");
+    printf("Preencha o Vetor: ");
     scanf("%d", &v[i]);
 }
 }
@@ -18,21 +18,24 @@ void desalocar(int **v){
 
 }
 
-
 int main(){
-int *vh = (int*)calloc(4,sizeof(int));
 int tamanho = 4;
+int *vh = (int*)calloc(tamanho,sizeof(int));
+
+if(vh == NULL){
+    return 1;
+}
 
 preencher(vh , tamanho);
 ler_arr(vh , tamanho);
 
 puts("Valores antes da desalocaçao");
-printf("&vh = %p , vh = %p" , &vh , vh);
+printf("&vh = %p , vh = %p\n" , &vh , vh);
 
 desalocar(&vh);
 
-puts("\nValores depois da desalocaçao");
-printf("&vh = %p , vh = %p" , &vh , vh);
+puts("Valores depois da desalocaçao");
+printf("&vh = %p , vh = %p\n" , &vh , vh);
 
 
 
